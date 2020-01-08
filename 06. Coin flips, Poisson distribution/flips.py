@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import factorial
 
-flip_count = 100                           # Setting up the number of trials and flips in each trial                                   
-num_trials = 10000
+flip_count = 100             # Setting up the number of trials and flips in each trial                                   
+num_trials = 100000
 
 l = np.arange(0, flip_count, 0.1,  dtype = float)
 probs = np.exp(-8) * np.power(8, l) / factorial(l)  # Modeling the Poisson distribution 
@@ -19,9 +19,10 @@ for i in range(0, num_trials):                          # Flipping the coin [fli
 
 plt.figure()
 plt.plot(l, probs * 1.5 * num_trials)                   # Drawing the model prediction (plot) and
-plt.hist(heads)                                         # experimental data (histogram) on one figure     
+plt.hist(heads)                                         # experimental data (histogram) on one figure
+plt.title("The Poisson distribution model and experimental results")   
 plt.figure()
                       
 average_wait_time = np.nanmean(wait_times)              # Average waiting time overall
 plt.hist(wait_times, log = True)                        # Drawing the histogram with waiting times
-plt.title("Average = %f" % (average_wait_time)) 
+plt.title("Wait time. Average = %f" % (average_wait_time))
